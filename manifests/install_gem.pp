@@ -1,9 +1,9 @@
-class rvm::install_gem ( $gem, $ruby_version = 'ruby-1.9.3' ) {
-  	notice("Installing gem ${gem} for ruby ${ruby_version}")
+define rvm::install_gem($version, $ruby_version) {
+    	notify { "Installing $title $version for $ruby_version": }
 	rvm_gem {
-	"${gem}":
-	    name => $gem,
-	    ruby_version => $ruby_version,
-	    ensure => latest
+		$title:
+			name => $title,
+			ruby_version => $ruby_version,
+			ensure => $version
 	}
-}
+  }
